@@ -5,5 +5,9 @@ FactoryBot.define do
     end
 
     difficulty { 1 }
+
+    trait :invalid do
+      title { nil }
+    end
   end
 end
