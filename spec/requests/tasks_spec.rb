@@ -29,7 +29,7 @@ RSpec.describe "Tasks", type: :request do
     context 'when the task is valid' do
       before(:example) do
         @task_params = FactoryBot.attributes_for(:task)
-        post tasks_path, params: { task: @task_params }
+        post tasks_path, params: { task: @task_params }, headers: authenticated_header
       end
 
       it 'returns http created' do
@@ -44,7 +44,7 @@ RSpec.describe "Tasks", type: :request do
     context 'when the task is invalid' do
       before(:example) do
         @task_params = FactoryBot.attributes_for(:task, :invalid)
-        post tasks_path, params: { task: @task_params }
+        post tasks_path, params: { task: @task_params }, headers: authenticated_header
         @json_response = JSON.parse(response.body)
       end
 

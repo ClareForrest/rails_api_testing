@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user, only: [:create]
+
   def index
     tasks = Task.all
     render json: { tasks: tasks }
